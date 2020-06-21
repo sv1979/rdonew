@@ -1,0 +1,320 @@
+.styled_button {
+    @extend .font_bold;
+    font-size: 16px;
+    width: 240px;
+    padding: 11px 16px 14px;
+    text-align: center;
+    display: inline-block;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: none;
+    }
+    &.button_yellow {
+        background-color: $yellow;
+        color: $black;
+        &:hover {
+            background-color: $yellow_dark;
+        }
+    }
+    @media #{$mobile} {
+        width: 100%;
+    }
+}
+
+.top_header {
+    background-color: $dark;
+    .header_box {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        .toggle_box, .logo_box, .header_controls {
+            flex: 1;
+            height: 44px;
+        }
+    }
+    button {
+        @extend .reset_button_appearance;
+    }
+    .controls_button_text {
+        display: none;
+        white-space: nowrap;
+        color: $black;
+        padding: 0 4px;
+    }
+    .logo_box {
+        text-align: center;
+    }
+    .header_logo {
+        display: inline-block;
+        height: 44px;
+        min-width: 40px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        &.main_logo {
+            background-image: url('../assets/rdo_logo_white.svg');
+        }
+        &.cobrand_logo {
+            display: none;
+        }
+    }
+    .mobile_menu_toggle {
+        width: 53px;
+        height: 44px;
+        background-image: url('../assets/hamburger_icon.svg');
+        background-repeat: no-repeat;
+        background-size: 21px 30px;
+        background-position: center center;
+    }
+    .header_controls {
+        display: flex;
+        justify-content: flex-end;
+        .controls_button {
+            flex: 0 0 35px;
+            display: flex;
+            align-items: center;
+        }
+        .resource_center {
+            display: none;
+        }
+        .resource_center, .user_menu, .cart_control {
+            position: relative;
+            &:before {
+                width: 22px;
+                height: 44px;
+                display: inline-block;
+                content: '';
+                background-image: url('../assets/hamburger_icon.svg');
+                background-repeat: no-repeat;
+                background-size: 21px 30px;
+                background-position: center center;
+            }
+        }
+        .user_menu {
+            &:after {
+                @include chevron_after(8px);
+                border-color: $white;
+                margin-left: 4px;
+                margin-right: 4px;
+            }
+        }
+        .cart_control {
+            justify-content: center;
+        }
+        .number_tag {
+            position: absolute;
+            top: 5px;
+            right: 1px;
+            color: $black;
+            background-color: $yellow;
+            border: 1px solid $white;
+            width: 14px;
+            height: 14px;
+            font-size: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+    .mobile_locations {
+        background-color: $fog;
+        line-height: 1;
+        .location_button {
+            padding: 0 21px;
+            display: flex;
+            align-items: center;
+            &:before {
+                width: 22px;
+                height: 38px;
+                display: inline-block;
+                content: '';
+                background-image: url('../assets/map_icon.svg');
+                background-repeat: no-repeat;
+                background-size: 30px 30px;
+                background-position: center center;
+            }
+            .button_text {
+                display: inline-block;
+                padding: 0 6px;
+            }
+            &:after {
+                @include chevron_after(8px);
+                border-color: $black;
+                margin-top: -5px;
+            }
+        }
+    }
+    .subheader_line {
+        background-color: $green;
+        .subheader_nav {
+            display: none;
+        }
+        .top_menu_search {
+            padding: 6px 0;
+        }
+        .page-header__search {
+            height: 45px;
+            display: flex;
+            border-radius: 6px;
+            overflow: hidden;
+            [type=search] {
+                flex: 1;
+                appearance: none;
+                border: none;
+                padding: 0 8px
+            }
+            .search_button {
+                flex: 0 0 50px;
+                background-color: $yellow;
+                background-image: url('../assets/search_icon.svg');
+                background-repeat: no-repeat;
+                background-size: 30px 30px;
+                background-position: center center;
+                &:hover {
+                    background-color: $yellow_dark;
+                }
+            }
+        }
+        .sn_button {
+            color: $white;
+            @extend .font_bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &.has_dropdown {
+                &:after {
+                    @include chevron_after(8px);
+                    border-color: $white;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+    &.transparent_bg {
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+        background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+        .header_box {
+            background-color: $dark;
+        }
+        .subheader_line {
+            background-color: transparent;
+            .page-header__search {
+                border-radius: 0;
+                border-bottom: 2px solid $white;
+                [type=search], .search_button {
+                    background-color: transparent;
+                }
+                [type=search] {
+                    color: $white;
+                }
+            }
+        }
+    }
+    @media #{$not-tablet} {
+        &.solid_bg {
+            background-color: $fog;
+            .toggle_box, .mobile_locations {
+                display: none;
+            }
+            .logo_box, .header_controls {
+                height: 67px;
+            }
+            .logo_box {
+                text-align: left;
+            }
+            .header_logo {
+                height: 67px;
+                min-width: 160px;
+                background-size: auto 51px;
+                &.main_logo {
+                    background-image: url('../assets/rdo_logo_white.svg');
+                }
+                &.cobrand_logo {
+                    display: inline-block;
+                    background-image: url('../assets/rdo_logo_white.svg');
+                }
+            }
+            .header_controls {
+                .resource_center, .user_menu, .cart_control {
+                    &:before {
+                        background-image: url('../assets/hamburger_icon_black.svg');
+                    }
+                }
+                .number_tag {
+                    top: 11px;
+                    left: 28px;
+                    width: 18px;
+                    height: 18px;
+                    font-size: 11px;
+                }
+                .resource_center {
+                    display: flex;
+                }
+            }
+            .user_menu {
+                &:after {
+                    border-color: $black;
+                }
+            }
+            .controls_button {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .controls_button_text {
+                display: inline-block;
+            }
+            .subheader_line {
+                .subheader_menu_box, .subheader_nav {
+                    display: flex;
+                }
+                .subheader_nav {
+                    flex: 1;
+                    justify-content: space-around;
+                }
+                .top_menu_search {
+                    padding: 10px 0;
+                    flex: 0 0 30%;
+                }
+                .page-header__search {
+                    [type=search] {
+                    }
+                    .search_button {
+                        width: 50px;
+                    }
+                }
+            }
+        }
+    }
+    @media #{$desktop} {
+        &.solid_bg {
+            .subheader_line {
+                .top_menu_search {
+                    flex: 0 0 350px;
+                }
+                .subheader_nav {
+                    justify-content: space-between;
+                    margin-left: 15px;
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+    @media #{$wide} {
+        &.solid_bg {
+            .subheader_line {
+                .subheader_nav {
+                    margin-left: 160px;
+                    margin-right: 160px;
+                }
+            }
+        }
+    }
+}

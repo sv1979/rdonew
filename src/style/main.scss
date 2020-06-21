@@ -1,0 +1,13 @@
+body {
+    @extend .font_regular;
+}
+.btns {
+    padding: 60px;
+    display: flex;
+    .styled_button {
+        margin: 10px 15px;
+    }
+    @media #{$mobile} {
+        flex-wrap: wrap;
+    }
+}
